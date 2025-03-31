@@ -19,5 +19,8 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
       - name: Add Known Hosts 
         run: ssh-keyscan -t rsa "${{ secrets.HOST }}" >> ~/.ssh/known_hosts 
-      - name: Deploy with rsync
+      - name: Deploy to site1 with rsync
         run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
+      - name: Deploy to site2 with rsync
+        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/${{ secrets.WEBSITE }}/babayaga
+      
