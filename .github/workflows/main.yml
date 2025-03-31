@@ -20,7 +20,7 @@ jobs:
       - name: Add Known Hosts 
         run: ssh-keyscan -t rsa "${{ secrets.HOST }}" >> ~/.ssh/known_hosts 
       - name: Deploy to site1 with rsync
-        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
+        run: rsync -rav --exclude '.git' --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
       - name: Deploy to site2 with rsync
-        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/${{ secrets.WEBSITE }}/public/babayaga
+        run: rsync -rav --exclude '.git' --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/${{ secrets.WEBSITE }}/public/babayaga
       
