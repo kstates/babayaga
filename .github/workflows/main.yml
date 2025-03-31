@@ -22,5 +22,5 @@ jobs:
       - name: Deploy to site1 with rsync
         run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
       - name: Deploy to site2 with rsync
-        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/${{ secrets.WEBSITE }}/babayaga
+        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/${{ secrets.WEBSITE }}/public/babayaga
       
