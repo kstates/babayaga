@@ -12,7 +12,7 @@ jobs:
       - name: Run npm install
         run: npm install 
       - name: Build site 
-        run: npm build
+        run: npm run build
       - name: Create SSH key
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
@@ -20,4 +20,4 @@ jobs:
       - name: Add Known Hosts 
         run: ssh-keyscan -t rsa "${{ secrets.HOST }}" >> ~/.ssh/known_hosts 
       - name: Deploy with rsync
-        run: rsync -rav --delete ${{ github.workspace }}/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
+        run: rsync -rav --delete ${{ github.workspace }}/dist/ "${{ secrets.USER }}"@${{ secrets.HOST }}:~/electrictestgarden.com/babayaga
